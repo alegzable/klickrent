@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
+import { colors } from "./styleVariables";
 
 export default createGlobalStyle`
     ${normalize}
@@ -22,9 +23,8 @@ export default createGlobalStyle`
 
     .root {
         height: 100%;
-        background-color: #f0f8ff;
-        color: #545454;
-        overflow-y: scroll;
+        background-color: ${colors.lightBlue};
+        color: ${colors.gray};
     }
     
     ul {
