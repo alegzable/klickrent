@@ -19,12 +19,12 @@ export default createGlobalStyle`
 
     body { 
         height: calc(100vh);
+        background-color: ${colors.lightBlue};
+        color: ${colors.gray};
     }
 
     .root {
         height: 100%;
-        background-color: ${colors.lightBlue};
-        color: ${colors.gray};
     }
     
     ul {

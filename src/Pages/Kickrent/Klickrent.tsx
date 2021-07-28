@@ -1,6 +1,7 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import Button from "../../Components/Common/Button";
+import Modal from "../../Components/Common/Modal";
 import Page from "../../Components/Layout/Page";
 
 const Div = styled.div`
@@ -15,10 +16,13 @@ const StyledButton = styled(Button)`
 `;
 
 const Klickrent = (): ReactElement => {
+	const [showModal, setShowModal] = useState(false);
+
 	return (
 		<Page title="klickrent">
 			<Div>
-				<StyledButton>Start inquiry</StyledButton>
+				<StyledButton onClick={() => setShowModal(true)}>Start inquiry</StyledButton>
+				{showModal && <Modal title="DIRECT REQUEST" onClose={() => setShowModal(false)}></Modal>}
 			</Div>
 		</Page>
 	);
