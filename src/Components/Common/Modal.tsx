@@ -4,7 +4,7 @@ import { PropsWithChildren, useEffect, useRef } from "react";
 import { ReactElement } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-import { colors } from "../../styleVariables";
+import { breakpoints, colors } from "../../styleVariables";
 import Button from "./Button";
 
 export type Props = {
@@ -33,11 +33,31 @@ const RootModal = ({ children }: PropsWithChildren<unknown>): ReactElement => {
 	return createPortal(children, innerDiv);
 };
 
+const Backdrop = styled.div`
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(255 255 255 / 90%);
+`;
+
 const Wrapper = styled.div`
 	height: 100%;
 	width: 100%;
 	background: ${colors.lightBlue};
+	box-shadow: 0.1rem 0.1rem 0.2rem ${colors.lightGray};
 	padding: 3rem 3rem;
+
+	@media screen and ${breakpoints.sm} {
+		height: 80%;
+		width: 80%;
+	}
+
+	@media screen and ${breakpoints.lg} {
+		height: 60%;
+		width: 60%;
+	}
 `;
 
 const Header = styled.div`
@@ -56,15 +76,17 @@ const StyledButton = styled(Button)`
 const Modal = ({ title, onClose, children }: PropsWithChildren<Props>) => {
 	return (
 		<RootModal>
-			<Wrapper>
-				<Header>
-					<h2>{title}</h2>
-					<StyledButton onClick={onClose} title="close">
-						<FontAwesomeIcon icon={faTimesCircle} />
-					</StyledButton>
-				</Header>
-				{children}
-			</Wrapper>
+			<Backdrop>
+				<Wrapper>
+					<Header>
+						<h2>{title}</h2>
+						<StyledButton onClick={onClose} title="close">
+							<FontAwesomeIcon icon={faTimesCircle} />
+						</StyledButton>
+					</Header>
+					{children}
+				</Wrapper>
+			</Backdrop>
 		</RootModal>
 	);
 };

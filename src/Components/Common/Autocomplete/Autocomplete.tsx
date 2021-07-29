@@ -4,6 +4,7 @@ import { debounce } from "lodash";
 import SuggestionGroup from "./SuggestionGroup";
 import SuggestionGroupModel from "../../../Models/SuggestionGroupModel";
 import AutocompleteInput from "./AutocompleteInput";
+import { colors } from "../../../styleVariables";
 
 type Props = {
 	suggestions: SuggestionGroupModel[];
@@ -16,12 +17,13 @@ const Container = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: ${colors.lightBlue};
 `;
 
 const Suggestions = styled.ul`
 	max-height: 30rem;
 	overflow: auto;
-	box-shadow: 0.1rem 0.1rem 0.2rem #919294;
+	box-shadow: 0.1rem 0.1rem 0.2rem ${colors.lightGray};
 `;
 
 const Autocomplete = ({ placeholder, suggestions, onInputChange, onSelect }: Props): ReactElement => {
