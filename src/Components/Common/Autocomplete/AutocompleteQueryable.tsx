@@ -12,9 +12,14 @@ const AutocompleteQueryable = ({ placeholder, query, onSelect }: Props): ReactEl
 	const [suggestions, setSuggestions] = useState<SuggestionGroupModel[]>([]);
 
 	const onInputChange = async (value: string) => {
-		const suggestions = await query(value);
+		try {
+			const suggestions = await query(value);
 
-		setSuggestions(suggestions);
+			setSuggestions(suggestions);
+		} catch (error) {
+			// display some error toast
+			console.log(error);
+		}
 	};
 
 	return (

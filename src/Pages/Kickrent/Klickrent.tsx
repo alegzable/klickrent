@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../../Components/Common/Button";
 import Modal from "../../Components/Common/Modal";
 import Page from "../../Components/Layout/Page";
+import DirectRequest from "./DirectRequest";
 
 const Div = styled.div`
 	height: 100%;
@@ -22,7 +23,11 @@ const Klickrent = (): ReactElement => {
 		<Page title="klickrent">
 			<Div>
 				<StyledButton onClick={() => setShowModal(true)}>Start inquiry</StyledButton>
-				{showModal && <Modal title="DIRECT REQUEST" onClose={() => setShowModal(false)}></Modal>}
+				{showModal && (
+					<Modal title="DIRECT REQUEST" onClose={() => setShowModal(false)}>
+						<DirectRequest />
+					</Modal>
+				)}
 			</Div>
 		</Page>
 	);
