@@ -15,7 +15,12 @@ type Props = {
 const Input = styled.input`
 	padding: 1rem;
 	background-color: ${colors.veryLightBlue};
-	border-width: 1px;
+	border-width: 0.1rem;
+	border-radius: 0.4rem;
+
+	&:focus-visible {
+		outline-color: ${colors.lightGray};
+	}
 `;
 
 const AutocompleteInput = ({ value, placeholder, onChange, onFocus, onBlur }: Props): ReactElement => {
