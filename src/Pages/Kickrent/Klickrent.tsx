@@ -4,6 +4,7 @@ import Button from "../../Components/Common/Button";
 import Modal from "../../Components/Common/Modal";
 import Page from "../../Components/Layout/Page";
 import DirectRequest from "./DirectRequest";
+import { breakpoints } from "../../styleVariables";
 
 const Div = styled.div`
 	height: 100%;
@@ -14,6 +15,10 @@ const Div = styled.div`
 
 const StyledButton = styled(Button)`
 	width: 80%;
+
+	@media screen and ${breakpoints.sm} {
+		max-width: 30rem;
+	}
 `;
 
 const Klickrent = (): ReactElement => {
